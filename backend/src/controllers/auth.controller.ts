@@ -8,7 +8,7 @@ const signToken = (userId: string, role: UserRole): string => {
   const payload: JwtPayload = { userId, role };
   const expiresIn = (process.env.JWT_EXPIRES_IN || '7d') as import('jsonwebtoken').SignOptions['expiresIn'];
 return jwt.sign(payload, secret, { expiresIn });
-
+};
 export const register = async (req: Request, res: Response): Promise<void> => {
   const { name, email, password, role } = req.body;
 
