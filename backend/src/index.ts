@@ -13,11 +13,13 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.options('*', cors());
-app.use(cors({ 
-  origin: ['https://smart-leads-wfbf.vercel.app', 'http://localhost:5173'], 
-  credentials: true 
-}));
+const corsOptions = {
+  origin: ['https://smart-leads-wfbf.vercel.app', 'http://localhost:5173'],
+  credentials: true
+};
+
+app.options('*', cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(morgan('dev'));
 
